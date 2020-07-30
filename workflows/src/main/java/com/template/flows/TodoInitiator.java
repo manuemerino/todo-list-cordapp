@@ -36,7 +36,7 @@ public class TodoInitiator extends FlowLogic<Void> {
     @Override
     public Void call() throws FlowException {
         // TodoInitiator flow logic goes here.
-        Party myIdentity = getServiceHub().getMyInfo().getLegalIdentities().get(0);
+        Party myIdentity = getOurIdentity();
         Party notary = getServiceHub().getNetworkMapCache().getNotaryIdentities().get(0);
         TodoState todoState = new TodoState(myIdentity,myIdentity,taskDescription);
         TransactionBuilder utx = new TransactionBuilder(notary)
